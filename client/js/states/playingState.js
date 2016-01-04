@@ -27,7 +27,7 @@ MyGame.PlayingState.prototype = {
     this.physics.startSystem(Phaser.Physics.P2JS);
     this.physics.p2.defaultRestitution = 0.8;
 
-    // starfield = this.add.tileSprite(0, 0, 800, 600, 'stars');
+    // this.background = this.add.tileSprite(0, 0, 800, 600, 'stars');
     this.background.fixedToCamera = true;
 
     ship = this.add.sprite(200, 200, 'ship');
@@ -41,7 +41,39 @@ MyGame.PlayingState.prototype = {
   },
 
   update: function () {
-    this.background.tilePosition.y += 2;
+    // this.background.tilePosition.y += 2;
+
+    if (cursors.left.isDown)
+    {
+        ship.body.rotateLeft(100);
+    }
+    else if (cursors.right.isDown)
+    {
+        ship.body.rotateRight(100);
+    }
+    else
+    {
+        ship.body.setZeroRotation();
+    }
+
+    if (cursors.up.isDown)
+    {
+        ship.body.thrust(400);
+    }
+    else if (cursors.down.isDown)
+    {
+        ship.body.reverse(400);
+    }
+
+    if (!this.camera.atLimit.x)
+    {
+        this.background.tilePosition.x -= (ship.body.velocity.x * this.time.physicsElapsed);
+    }
+
+    if (!this.camera.atLimit.y)
+    {
+        this.background.tilePosition.y -= (ship.body.velocity.y * this.time.physicsElapsed);
+    }
   },
 
   resize: function (width, height) {

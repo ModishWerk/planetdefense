@@ -1,4 +1,4 @@
-# NodeJS Online Game Template
+# Planet Defense
 
 Barebone NodeJS project for any multiplayer games.
 
