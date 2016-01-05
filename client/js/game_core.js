@@ -10,6 +10,8 @@ require([
           './states/introState',
           './states/menuState',
           './states/playingState',
+          './entities/bullet',
+          // './entities/bullet',
         ], function () {
 
 });

@@ -16,6 +16,7 @@ MyGame.IntroState.prototype = {
 
   preload: function () {
     this.load.image('background', '../assets/img/spaceshooter/Backgrounds/purple.png');
+
     // this.load.audio('blaster', 'assets/audio/blaster.mp3');
 
     this.load.onFileComplete.add(this.fileLoaded, this);
